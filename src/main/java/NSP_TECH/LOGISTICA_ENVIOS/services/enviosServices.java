@@ -31,6 +31,13 @@ public class enviosServices {
         return enviosrepository.findById(ID_ENVIO).get();
 
     }
+
+    
+    public envios GuardarEnvios(envios envios){
+        return enviosrepository.save(envios);
+
+    }
+
     
 
 }
