@@ -16,9 +16,9 @@ public class enviosModelAssembler implements RepresentationModelAssembler<envios
     public EntityModel<envios> toModel(envios e) {
         return EntityModel.of(
             e,
-            linkTo(methodOn(enviosController.class).BuscarEnvio(e.getID_ENVIO())).withRel("LINKS"),
+            linkTo(methodOn(enviosController.class).BuscarEnvio(e.getId_envio())).withRel("LINKS"),
             linkTo(methodOn(enviosController.class).ListarTodo()).withRel("todas-los-envios"),
-            linkTo(methodOn(enviosController.class).ActualizarEnvio(e.getID_ENVIO(), e)).withRel("actualiza-un-envio")
+            linkTo(methodOn(enviosController.class).ActualizarEnvio(e.getId_envio(), e)).withRel("actualiza-un-envio")
         );
     }
 

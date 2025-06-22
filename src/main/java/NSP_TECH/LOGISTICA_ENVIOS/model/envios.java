@@ -26,31 +26,31 @@ public class envios {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_ENVIO")
     @Schema(description="aa")
-    private Long ID_ENVIO;
+    private Long id_envio;
 
     @Column(name="TRANSPORTISTA",nullable=false,length=50)
     @Schema(description="aa")
-    private String TRANSPORTISTA;
+    private String transportista;
 
     @Column(name="NUMERO_GUIA",nullable=false,precision=10)
     @Schema(description="aa")
-    private int NUMERO_GUIA;
+    private int numero_guia;
 
     @Column(name="FECHA_ENVIO",nullable=false)
     @Schema(description="aa")
-    private Timestamp FECHA_ENVIO;
+    private Timestamp fecha_envio;
 
     @Column(name="FECHA_ENTREGA",nullable=true)
     @Schema(description="aa")
-    private Timestamp FECHA_ENTREGA;
+    private Timestamp fecha_entrega;
 
     @Column(name="ESTADO",nullable=false,length=20)
     @Schema(description="aa")
-    private String ESTADO;
+    private String estado;
     
     @Column(name = "ID_PEDIDO",nullable=false,precision=10)
     @Schema(description="aa")
-    private Long ID_PEDIDO;
+    private Long id_pedido;
 
 
 }

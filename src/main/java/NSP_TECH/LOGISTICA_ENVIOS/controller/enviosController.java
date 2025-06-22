@@ -82,7 +82,7 @@ public class enviosController {
 
 // ENDPOINT PARA REGISTRAR UN ENVIO
     @PostMapping
-    @Operation(summary = "ENDPOINT QUE REGISTRA UN ENVIO", description = "ENDPOINT QUE REGISTRA UN ENVIO",requestBody= @io.swagger.v3.oas.annotations.parameters.RequestBody(description="ENVIO QUE SE VA A REGISTRAR", required = true), content = @Content(schema = @Schema(implementation = envios.class)))
+    @Operation(summary = "ENDPOINT QUE REGISTRA UN ENVIO", description = "ENDPOINT QUE REGISTRA UN ENVIO",requestBody= @io.swagger.v3.oas.annotations.parameters.RequestBody(description="ENVIO QUE SE VA A REGISTRAR", required = true, content = @Content(schema = @Schema(implementation = envios.class))))
     @ApiResponses (value = {
         @ApiResponse(responseCode = "200", description = "Se registro correctamente el envio", content = @Content(mediaType = "application/json", schema = @Schema(implementation = envios.class))),
         @ApiResponse(responseCode = "500", description = "Indica que no se logro registrar el envio", content = @Content(mediaType = "application/json", schema = @Schema(type = "string", example = "No se puede registrar el envio")))
@@ -100,7 +100,7 @@ public class enviosController {
     // ENDPOINT PARA EDITAR UN ENVIO
     @PutMapping("/{ID_ENVIO}") //SOLO PERMITE ACTUALIZAR ESCRIBIENDO TODOS LOS DATOS
 
-    @Operation(summary = "ENDPOINT QUE EDITA UN ENVIO", description = "ENDPOINT QUE EDITA UN ENVIO", requestBody=@io.swagger.v3.oas.annotations.parameters.RequestBody(description="ENVIO QUE SE VA A REGISTRAR", required = true), content = @Content(schema = @Schema(implementation = envios.class)))
+    @Operation(summary = "ENDPOINT QUE EDITA UN ENVIO", description = "ENDPOINT QUE EDITA UN ENVIO", requestBody=@io.swagger.v3.oas.annotations.parameters.RequestBody(description="ENVIO QUE SE VA A REGISTRAR", required = true, content = @Content(schema = @Schema(implementation = envios.class))))
     @Parameters (value = {
         @Parameter (name="ID_ENVIO", description= "ID del envio que se editara", in = ParameterIn.PATH, required= true)})
 
@@ -112,12 +112,12 @@ public class enviosController {
     public ResponseEntity<?> ActualizarEnvio(@PathVariable Long ID_ENVIO, @RequestBody envios enviosActualizar){
         try {
             envios enviosActualizado = enviosservice.BuscarUnEnvio(ID_ENVIO);
-            enviosActualizado.setNUMERO_GUIA(enviosActualizar.getNUMERO_GUIA());
-            enviosActualizado.setESTADO(enviosActualizar.getESTADO());
-            enviosActualizado.setFECHA_ENTREGA(enviosActualizar.getFECHA_ENTREGA());
-            enviosActualizado.setFECHA_ENVIO(enviosActualizar.getFECHA_ENVIO());
-            enviosActualizado.setID_PEDIDO(enviosActualizar.getID_PEDIDO());
-            enviosActualizado.setTRANSPORTISTA(enviosActualizar.getTRANSPORTISTA());
+            enviosActualizado.setNumero_guia(enviosActualizar.getNumero_guia());
+            enviosActualizado.setEstado(enviosActualizar.getEstado());
+            enviosActualizado.setFecha_entrega(enviosActualizar.getFecha_entrega());
+            enviosActualizado.setFecha_envio(enviosActualizar.getFecha_envio());
+            enviosActualizado.setId_envio(enviosActualizar.getId_envio());
+            enviosActualizado.setTransportista(enviosActualizar.getTransportista());
             enviosservice.GuardarEnvios(enviosActualizado);
             return ResponseEntity.ok(assembler.toModel(enviosActualizar));
         } catch (Exception e) {
