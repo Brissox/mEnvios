@@ -1,6 +1,6 @@
 package NSP_TECH.LOGISTICA_ENVIOS.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Table(name="ENVIOS")
 @AllArgsConstructor
 @NoArgsConstructor
+@Schema(description="Contiene la informacion relacionada con el proceso de envio de productos")
 
 
 public class envios {
@@ -25,31 +26,31 @@ public class envios {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="ID_ENVIO")
-    @Schema(description="aa")
+    @Schema(description="identificador del envio, se genera automaticamente")
     private Long id_envio;
 
     @Column(name="TRANSPORTISTA",nullable=false,length=50)
-    @Schema(description="aa")
+    @Schema(description="nombre de la empresa que transporta el envio",example="starken")
     private String transportista;
 
     @Column(name="NUMERO_GUIA",nullable=false,precision=10)
-    @Schema(description="aa")
+    @Schema(description="codigo unico asignado a cada envio", example="111111")
     private int numero_guia;
 
     @Column(name="FECHA_ENVIO",nullable=false)
-    @Schema(description="aa")
-    private Timestamp fecha_envio;
+    @Schema(description="Fecha en que el paquete se entrega al transportista",example="")
+    private Date fecha_envio;
 
     @Column(name="FECHA_ENTREGA",nullable=true)
-    @Schema(description="aa")
-    private Timestamp fecha_entrega;
+    @Schema(description="fecha en que el paquete llega fisicamente a su destino final", example="")
+    private Date fecha_entrega;
 
     @Column(name="ESTADO",nullable=false,length=20)
-    @Schema(description="aa")
+    @Schema(description="informacion del progreso del envio", example="en transito/en proceso de envio/entregado")
     private String estado;
     
     @Column(name = "ID_PEDIDO",nullable=false,precision=10)
-    @Schema(description="aa")
+    @Schema(description="identificador del pedido que se enviara", example="1")
     private Long id_pedido;
 
 
