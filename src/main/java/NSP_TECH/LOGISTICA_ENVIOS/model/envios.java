@@ -1,6 +1,9 @@
 package NSP_TECH.LOGISTICA_ENVIOS.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+
+import org.hibernate.dialect.function.TruncFunction;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
@@ -38,12 +41,12 @@ public class envios {
     private int numero_guia;
 
     @Column(name="FECHA_ENVIO",nullable=false)
-    @Schema(description="Fecha en que el paquete se entrega al transportista",example="")
-    private Date fecha_envio;
+    @Schema(description="Fecha en que el paquete se entrega al transportista",example="2025-06-24T15:30:00")
+    private LocalDateTime fecha_envio;
 
     @Column(name="FECHA_ENTREGA",nullable=true)
-    @Schema(description="fecha en que el paquete llega fisicamente a su destino final", example="")
-    private Date fecha_entrega;
+    @Schema(description="fecha en que el paquete llega fisicamente a su destino final", example="2025-06-24T15:30:00")
+    private LocalDateTime fecha_entrega;
 
     @Column(name="ESTADO",nullable=false,length=20)
     @Schema(description="informacion del progreso del envio", example="en transito/en proceso de envio/entregado")

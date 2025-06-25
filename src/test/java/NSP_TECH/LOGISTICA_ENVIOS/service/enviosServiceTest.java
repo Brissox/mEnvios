@@ -1,5 +1,6 @@
 package NSP_TECH.LOGISTICA_ENVIOS.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -43,16 +44,16 @@ public class enviosServiceTest {
 
     envio1.setId_envio(11L);
     envio1.setEstado("estado");
-    envio1.setFecha_entrega(null);
-    envio1.setFecha_envio(null);
+    envio1.setFecha_entrega(LocalDateTime.now());
+    envio1.setFecha_envio(LocalDateTime.now().minusDays(1));
     envio1.setId_pedido(11L);
     envio1.setNumero_guia(123123);
     envio1.setTransportista("bastian");
 
     envio2.setId_envio(12L);
     envio2.setEstado("estado");
-    envio2.setFecha_entrega(null);
-    envio2.setFecha_envio(null);
+    envio2.setFecha_entrega(LocalDateTime.now().minusHours(4));
+    envio2.setFecha_envio(LocalDateTime.now().minusDays(1));
     envio2.setId_pedido(12L);
     envio2.setNumero_guia(1323123);
     envio2.setTransportista("Maryanne");
@@ -76,8 +77,8 @@ public class enviosServiceTest {
 
     envio1.setId_envio(11L);
     envio1.setEstado("estado");
-    envio1.setFecha_entrega(null);
-    envio1.setFecha_envio(null);
+    envio1.setFecha_entrega(LocalDateTime.now());
+    envio1.setFecha_envio(LocalDateTime.now().minusDays(1));
     envio1.setId_pedido(11L);
     envio1.setNumero_guia(123123);
     envio1.setTransportista("bastian");
@@ -96,8 +97,8 @@ public class enviosServiceTest {
     public void testGuardarEnvio(){
         envios v = new envios();
         v.setEstado("estado");
-        v.setFecha_entrega(null);
-        v.setFecha_envio(null);
+        v.setFecha_entrega(LocalDateTime.now());
+        v.setFecha_envio(LocalDateTime.now().minusDays(1));
         v.setId_envio(11L);
         v.setId_pedido(11L);
         v.setNumero_guia(123123);
