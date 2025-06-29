@@ -30,6 +30,11 @@ public class enviosServices {
 
     }
 
+    public void EliminarEnvio(Long ID_ENVIO){
+        enviosrepository.deleteById(ID_ENVIO);
+
+    }
+
 }
 
 /*  /*public List<envios> listarEnvios() {

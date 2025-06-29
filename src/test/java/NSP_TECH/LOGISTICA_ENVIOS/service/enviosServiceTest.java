@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -113,17 +115,40 @@ public class enviosServiceTest {
     }
 
 
-/*
+    @Test
+    public void testEditarEnvio(){
+
+        envios enviosO = new envios();
+        enviosO.setId_envio(11L);
+        enviosO.setNumero_guia(1);
+        enviosO.setTransportista("Santiago");
+
+        envios enviosE = new envios();
+        enviosE.setId_envio(11L);
+        enviosE.setNumero_guia(12);
+        enviosE.setTransportista("Josue");
+
+
+        when(enviorepository.save(any(envios.class))).thenReturn(enviosE);
+        when(enviorepository.existsById(11L)).thenReturn(true);
+        envios resultado = enviosservices.GuardarEnvios(enviosE);
+
+        assertNotNull(resultado);
+        assertEquals(11L, resultado.getId_envio());
+        assertEquals(12, resultado.getNumero_guia());
+        assertEquals("Josue", resultado.getTransportista());
+
+        verify(enviorepository, times(1)).save(enviosE);
+    }
 
     @Test
     public void testEliminarEnvio(){
         Long id = 11L;
         doNothing().when(enviorepository).deleteById(id);
 
-        enviosservices.Eliminar***(id);
+        enviosservices.EliminarEnvio(11L);
 
-        verify(enviosrepository.times(1)).deleteById(id);
+        verify(enviorepository, times(1)).deleteById(id);
 
     }
-*/
 }
